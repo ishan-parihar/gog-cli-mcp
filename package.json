@@ -1,0 +1,34 @@
+{
+  "name": "gog-cli-mcp",
+  "version": "0.1.0",
+  "description": "MCP server for Google Workspace via gog CLI — Calendar, Gmail, Contacts, Forms, Drive",
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "gog-mcp": "dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "start": "node dist/index.js",
+    "start:stdio": "node dist/index.js --transport stdio",
+    "start:http": "node dist/index.js --transport http --port 3100",
+    "typecheck": "tsc --noEmit",
+    "lint": "tsc --noEmit",
+    "test": "node scripts/test-mcp.mjs"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.1",
+    "docx": "^9.6.1",
+    "zod": "^3.24.2",
+    "zod-to-json-schema": "^3.24.5"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.0",
+    "esbuild": "^0.28.0",
+    "typescript": "^5.7.3"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

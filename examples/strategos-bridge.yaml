@@ -1,0 +1,44 @@
+agents:
+  coo:
+    role: "Chief Operating Officer"
+    mcp_tools:
+      gog-cli-mcp:
+        - "calendar.*"
+        - "drive.*"
+        - "gmail.search"
+        - "gmail.get_message"
+        - "gmail.get_thread"
+
+  cfo:
+    role: "Chief Financial Officer"
+    mcp_tools:
+      gog-cli-mcp:
+        - "drive.*"
+        - "calendar.events"
+        - "calendar.freebusy"
+
+  cro:
+    role: "Chief Revenue Officer"
+    mcp_tools:
+      gog-cli-mcp:
+        - "gmail.*"
+        - "contacts.*"
+        - "forms.*"
+        - "calendar.freebusy"
+
+  cmo:
+    role: "Chief Marketing Officer"
+    mcp_tools:
+      gog-cli-mcp:
+        - "gmail.search"
+        - "gmail.get_message"
+        - "gmail.get_thread"
+        - "drive.*"
+        - "forms.*"
+        - "document.*"
+
+  ceo:
+    role: "Chief Executive Officer"
+    mcp_tools:
+      gog-cli-mcp:
+        - "*"

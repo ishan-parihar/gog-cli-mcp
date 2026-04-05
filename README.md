@@ -66,8 +66,42 @@ Create a briefing doc → gog_document_generate(title: "Q1 Briefing", content: "
 | `gogPath` | `gog` | Path to gog binary |
 | `transport` | `stdio` | `stdio` for local agents, `http` for remote |
 | `enabledTools` | all | Modules to expose. Remove any to disable. |
+| `allowedTools` | `null` | Glob patterns to restrict tool registration. `null` = all tools. See below. |
 | `gmailDraftOnly` | `true` | `gog_gmail_send` creates a draft instead of sending |
 | `toolTimeoutMs` | `30000` | Timeout per gog command (ms) |
+
+### Tool Scoping
+
+Use `allowedTools` to restrict which tools the server registers. Supports glob patterns (`*`, `**`):
+
+```json
+{
+  "enabledTools": ["calendar", "gmail", "drive"],
+  "allowedTools": [
+    "gog_calendar_*",
+    "gog_gmail_search",
+    "gog_gmail_get_*",
+    "gog_drive_*"
+  ]
+}
+```
+
+When `allowedTools` is `null` or absent, all tools from enabled modules are registered. When present, only matching tools are registered — non-matching tools are silently skipped.
+
+#### Per-Agent Scoping (Strategos)
+
+Create one config per agent role, each with its own `allowedTools`:
+
+```
+config.ceo.json      → CEO: 34 tools (full calendar, read gmail/drive, contacts, forms, docs)
+config.coo.json      → COO: 28 tools (full calendar, read gmail/drive)
+config.cfo.json      → CFO: 10 tools (calendar events + freebusy, drive read)
+config.cro.json      → CRO: 26 tools (gmail drafts, contacts full, forms full, freebusy)
+config.cmo.json      → CMO: 25 tools (gmail drafts, drive read, forms full, docs)
+config.minimal.json  → CPO/CIO/Physician: 2 tools (freebusy + calendars only)
+```
+
+Each agent gets its own MCP server instance pointing to the appropriate config. See [`examples/strategos-bridge.yaml`](examples/strategos-bridge.yaml) for the full mapping.
 
 ## Integration
 

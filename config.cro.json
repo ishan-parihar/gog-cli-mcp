@@ -1,0 +1,17 @@
+{
+  "account": "ishan.parihar.official@gmail.com",
+  "enabledTools": ["gmail", "contacts", "forms", "calendar"],
+  "allowedTools": [
+    "gog_gmail_search",
+    "gog_gmail_get_*",
+    "gog_gmail_list_*",
+    "gog_gmail_get_urls",
+    "gog_gmail_*_draft",
+    "gog_contacts_*",
+    "gog_forms_*",
+    "gog_calendar_freebusy",
+    "gog_calendar_calendars"
+  ],
+  "gmailDraftOnly": true,
+  "toolTimeoutMs": 30000
+}

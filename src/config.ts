@@ -11,6 +11,7 @@ export interface GogMcpConfig {
   transport: "stdio" | "http";
   httpPort: number;
   enabledTools: string[];
+  allowedTools: string[] | null;
   gmailDraftOnly: boolean;
   toolTimeoutMs: number;
 }
@@ -21,6 +22,7 @@ const DEFAULT_CONFIG: GogMcpConfig = {
   transport: "stdio",
   httpPort: 3100,
   enabledTools: ["calendar", "gmail", "contacts", "forms", "drive", "document"],
+  allowedTools: null,
   gmailDraftOnly: true,
   toolTimeoutMs: 30000,
 };

@@ -2,6 +2,7 @@ import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { StreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/streamableHttp.js";
 import { createServer } from "http";
+import { createFilteredServer } from "./tool-filter.js";
 import { loadConfig } from "./config.js";
 import { registerCalendarTools } from "./tools/calendar.js";
 import { registerGmailTools } from "./tools/gmail.js";
@@ -22,9 +23,10 @@ const portFlag = parseInt(process.argv.includes("--port")
   ? process.argv[process.argv.indexOf("--port") + 1]
   : String(config.httpPort), 10);
 
-const server = new McpServer(
+const server = createFilteredServer(
   { name: "gog-cli-mcp", version: "0.1.0" },
   { capabilities: { logging: {} } },
+  config.allowedTools,
 );
 
 const moduleMap: Record<string, (s: McpServer, c: typeof config) => void> = {
@@ -93,10 +95,16 @@ if (transportFlag === "http") {
   httpServer.listen(portFlag, () => {
     console.error(`gog-cli-mcp HTTP server listening on port ${portFlag}`);
     console.error(`Enabled modules: ${enabled.join(", ")}`);
+    if (config.allowedTools?.length) {
+      console.error(`Allowed tools: ${config.allowedTools.join(", ")}`);
+    }
   });
 } else {
   const transport = new StdioServerTransport();
   await server.connect(transport);
   console.error(`gog-cli-mcp stdio server started`);
   console.error(`Enabled modules: ${enabled.join(", ")}`);
+  if (config.allowedTools?.length) {
+    console.error(`Allowed tools: ${config.allowedTools.join(", ")}`);
+  }
 }

@@ -3,24 +3,12 @@
   "title": "gog-cli-mcp configuration",
   "description": "Configuration for the gog CLI MCP server",
 
-  "account": "ishan.parihar.official@gmail.com",
-  "_comment_account": "Default Google account for gog commands. Override per-call with the 'account' parameter.",
-
+  "account": "your-email@gmail.com",
   "gogPath": "gog",
-  "_comment_gogPath": "Path to the gog binary. Defaults to 'gog' (assumes it's in PATH).",
-
   "transport": "stdio",
-  "_comment_transport": "Transport mode: 'stdio' (for local agents) or 'http' (for remote clients).",
-
   "httpPort": 3100,
-  "_comment_httpPort": "Port for HTTP transport (only used when transport is 'http').",
-
-  "enabledTools": ["calendar", "gmail", "contacts", "forms", "drive"],
-  "_comment_enabledTools": "Tool modules to expose. Remove any to disable. Options: calendar, gmail, contacts, forms, drive, document.",
-
+  "enabledTools": ["calendar", "gmail", "contacts", "forms", "drive", "document"],
+  "allowedTools": null,
   "gmailDraftOnly": true,
-  "_comment_gmailDraftOnly": "If true, gmail.send creates a draft instead of sending. Set false for direct send.",
-
-  "toolTimeoutMs": 30000,
-  "_comment_toolTimeoutMs": "Maximum time (ms) to wait for a gog command before timing out."
+  "toolTimeoutMs": 30000
 }

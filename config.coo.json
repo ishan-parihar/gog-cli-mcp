@@ -1,0 +1,13 @@
+{
+  "account": "ishan.parihar.official@gmail.com",
+  "enabledTools": ["calendar", "gmail", "drive"],
+  "allowedTools": [
+    "gog_calendar_*",
+    "gog_gmail_search",
+    "gog_gmail_get_*",
+    "gog_gmail_list_*",
+    "gog_drive_*"
+  ],
+  "gmailDraftOnly": true,
+  "toolTimeoutMs": 30000
+}

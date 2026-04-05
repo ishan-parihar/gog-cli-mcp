@@ -1,0 +1,10 @@
+{
+  "account": "ishan.parihar.official@gmail.com",
+  "enabledTools": ["calendar"],
+  "allowedTools": [
+    "gog_calendar_freebusy",
+    "gog_calendar_calendars"
+  ],
+  "gmailDraftOnly": true,
+  "toolTimeoutMs": 30000
+}

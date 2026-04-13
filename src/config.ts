@@ -30,6 +30,7 @@ const DEFAULT_CONFIG: GogMcpConfig = {
 export function loadConfig(configPath?: string): GogMcpConfig {
   const paths = [
     configPath,
+    process.env.GOG_MCP_CONFIG,
     join(process.cwd(), "config.json"),
     join(__dirname, "..", "config.json"),
     join(__dirname, "..", "..", "config.json"),

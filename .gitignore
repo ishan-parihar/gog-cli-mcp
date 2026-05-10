@@ -4,3 +4,6 @@ dist/
 .env
 config.json
 *.docx
+.contexty
+.memsearch
+.hive

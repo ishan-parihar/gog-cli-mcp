@@ -192,3 +192,7 @@ npm run test         # Run integration tests
 ## License
 
 MIT — see [LICENSE](LICENSE).
+
+---
+
+Developed by [Ishan Parihar](https://github.com/ishanparihar) — If you find this useful, [consider supporting](https://rzp.io/rzp/ishan-parihar)
